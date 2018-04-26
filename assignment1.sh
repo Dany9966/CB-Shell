@@ -66,15 +66,14 @@ else
 
 	for i in $filelist
 	do
-	    #echo "this i: $aux_dir/$i"
 	    if test -d $aux_dir/$i ; then
-	    	#echo scanning directory $aux_dir/$i
+	    	
 			$0 -r $arglist $aux_dir/$i
 				count=`expr $count + $?`
 			
 	    elif test -f $aux_dir/$i ; then #if regfile then check if tar archive
 	    	if isTarArchive $i ; then
-	    		#echo "calling: \$0 -r$arglist $aux_dir/$i"
+	    		
 	    		$0 -r$arglist $aux_dir/$i
 	    			count=`expr $count + $?`
 	    	else
@@ -98,11 +97,10 @@ else
 		done
 	fi
 	#if last argument is 1 then return value
-	#echo $count
 	if test $recursivecall -eq 1 ; then
 		return $count
 	fi
-	#else print final count TODO
+	#else print final count
 	if test $countoccurances -eq 1 ; then
 		echo "there are $count occurences"
 	fi
